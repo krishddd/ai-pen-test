@@ -1,0 +1,92 @@
+# AI Security Pipeline v2.0 Configuration
+
+target:
+  base_url: "https://helena-subjects-clinical-proposed.trycloudflare.com"
+  model: "qwen2.5:7b"
+  embedding_model: "nomic-embed-text:latest"
+  api_format: "ollama"  # ollama or openai
+
+client:
+  timeout: 30
+  max_retries: 5
+  retry_backoff: 2
+  rate_limit: 10  # requests per second
+  connection_pool_size: 20
+  circuit_breaker:
+    failure_threshold: 5
+    recovery_timeout: 30
+
+scanner:
+  concurrency: 5
+  attack_categories:
+    - injection
+    - dos
+    - leakage
+    - poisoning
+    - evasion
+    - extraction
+    - multi_stage
+  verbose: true
+  progress_bar: true
+
+attacks:
+  injection:
+    enabled: true
+    max_depth: 3
+    payloads:
+      - direct_override
+      - context_smuggling
+      - encoding_evasion
+      - nested_prompts
+      - jailbreak
+  
+  dos:
+    enabled: true
+    token_counts: [1000, 5000, 10000]
+    concurrent_requests: [10, 30, 50]
+    duration_seconds: 60
+  
+  leakage:
+    enabled: true
+    targets:
+      - system_prompt
+      - training_data
+      - pii
+      - model_metadata
+  
+  poisoning:
+    enabled: true
+    persistence_tests: 3
+  
+  evasion:
+    enabled: true
+    techniques:
+      - rot13
+      - base64
+      - leet_speak
+      - unicode_homoglyphs
+      - whitespace
+      - fragmentation
+  
+  extraction:
+    enabled: true
+    fingerprint_depth: 3
+  
+  multi_stage:
+    enabled: true
+    chains:
+      - [context_poison, jailbreak, extract_data]
+
+reporting:
+  formats:
+    - markdown
+    - json
+    - html
+  output_dir: "./reports"
+  include_evidence: true
+  risk_scoring: true
+
+authentication:
+  api_key: "9304e4a475c677c2cb4d0219c63c6e0bc65254c04a4a0e710019024e4b01696a"
+  header_name: "Authorization"
+  header_prefix: "Bearer"

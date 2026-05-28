@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+eggs/
+*.egg
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Security Pipeline - Generated files
+logs/
+api_reports/
+reports/*.md
+reports/*.json
+reports/*.html
+*.db
+cookies.txt
+
+# Test artifacts
+test.db
+security_scans.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude / extra IDE
+.claude/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+client_secret*.json
+credentials.json
+token.json
+service-account*.json
+
+# Generated data
+results/
+pentest_reports/
+attacks/results/
+chroma_db/
+data/chroma/
+data/*.db
+data/*.pkl
+*.sqlite3
+*.csv
+
+# Large docs
+*.docx
+*.pdf
+
+# Notebook checkpoints
+.ipynb_checkpoints/
