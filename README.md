@@ -13,6 +13,8 @@ run.
 
 > ⚠️ Use only against systems you are authorised to test.
 
+> 💡 Tip: always store engagement IDs returned by `main.py` — they let you `--resume` after a crash or rate-limit pause without re-running completed probes.
+
 ---
 
 ## End-to-end pipeline
