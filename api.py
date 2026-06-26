@@ -6,6 +6,7 @@ RESTful API for LLM security testing with:
 - Configuration management
 - Attack execution endpoints
 - Report generation and retrieval
+- Engagement lifecycle management (create, resume, diff)
 """
 
 import os
